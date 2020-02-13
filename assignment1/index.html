@@ -92,32 +92,34 @@ body {
 </div>
     
     <button id="color">Change color!</button>
-<script>
+    <script>
     document.getElementById('color').onclick = changeColor;  
 	var currentColor = "cornflowerblue"; 
 
     function changeColor() {
-		if(currentColor == "green"){
-        document.body.style.color = "cornflowerblue";
-		currentColor = "cornflowerblue";
-		} else {
-		document.body.style.color = "green";
+		if(currentColor == "cornflowerblue"){
+        document.body.style.color = "green";
 		currentColor = "green";
+		} else {
+		document.body.style.color = "cornflowerblue";
+		currentColor = "cornflowerblue";
 		}
         return currentColor;
+    }   
+</script>
 
         <button id=changeStyle>Change Style!</button>
 <script>
-            document.getElementById('style').onclick = changeStyle;
-        var currentStyle () {
+            document.getElementById('style').onclick = changeFont-family;
+        var currentFontFamily () {
             if (currentStyle == Monaco) {
-                document.h1.style = "Monaco";
-                currentStyle = "Monaco"
+                document.body.fontFamily = "Monaco";
+                currentFontFamily = "Monaco"
             } else {
-                document.h1.style = "Times New Roman";
-                currentStyle = "Times New Roman"
+                document.body.fontFamily = "Times New Roman";
+                currentFontFamily = "Times New Roman"
             }
-            return currentStyle
+            return currentFontFamily
             }
             
         }
@@ -139,15 +141,23 @@ body {
 <div id="display"></div> 
     
 
-    function displayFunction() {
+    function displayFunction("") {
    var color_value = "";
-   if(document.getElementById("color1").checked) {
+   if(document.getElementById("display").checked) {
   color_value = document.getElementById("color1").value;
-   } else if (document.getElementById("color2").checked) { 
+   } else if (document.getElementById("display").checked) { 
   color_value= document.getElementById('color2').value;
    }
 }
 
+
+    <p2>
+        The first button will change the color, Try it!
+    </p2>
     
+
+
+    
+
 
 </html>

@@ -1,163 +1,213 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body {
-  font-family: Monaco, Helvetica, sans-serif;
-    color: cornflowerblue
-}
-
-.navbar {
-  overflow: hidden;
-  background-color: peachpuff;
-}
-
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.dropdown {
-  float: center;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: black;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: whitesmoke;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: center;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-</style>
-</head>
-<title>exercise 1</title>
-<body>
-
-<div class="navbar">
-  <a href="../index.html">Home</a>
-  <div class="dropdown">
-    <button class="dropbtn">Exercises and Assignments
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-        <a href="../exercise1/index.html">exercise1</a>
-        
-      <a href="../exercise2/index.html">exercise2</a>
-        
-      <a href="../Exercise3/">exercise3</a>
-        
-      <a href="https://rachelschmitz.github.io/L-A-458-558/exercise4/exercise4/index.html#7/42.174/-94.542">exercise4</a>
-    </div>
-  </div> 
-</div>
-    
-    <button id="color">Change color!</button>
-    <script>
-    document.getElementById('color').onclick = changeColor;  
-	var currentColor = "cornflowerblue"; 
-
-    function changeColor() {
-		if(currentColor == "cornflowerblue"){
-        document.body.style.color = "green";
-		currentColor = "green";
-		} else {
-		document.body.style.color = "cornflowerblue";
-		currentColor = "cornflowerblue";
-		}
-        return currentColor;
-    }   
-</script>
-
-        <button id=changeStyle>Change Style!</button>
-<script>
-            document.getElementById('style').onclick = changeFont-family;
-        var currentFontFamily () {
-            if (currentStyle == Monaco) {
-                document.body.fontFamily = "Monaco";
-                currentFontFamily = "Monaco"
-            } else {
-                document.body.fontFamily = "Times New Roman";
-                currentFontFamily = "Times New Roman"
-            }
-            return currentFontFamily
-            }
-            
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Monaco, Helvetica, sans-serif;
+            color: cornflowerblue
         }
 
+        .navbar {
+            overflow: hidden;
+            background-color: peachpuff;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: center;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: black;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: whitesmoke;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<title>exercise 1</title>
+
+<body>
+
+    <div class="navbar">
+        <a href="../index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Exercises and Assignments
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="../exercise1/index.html">exercise1</a>
+
+                <a href="../exercise2/index.html">exercise2</a>
+
+                <a href="../Exercise3/">exercise3</a>
+
+                <a href="https://rachelschmitz.github.io/L-A-458-558/exercise4/exercise4/index.html#7/42.174/-94.542">exercise4</a>
+            </div>
+        </div>
+    </div>
+
+    <button id="color">Change color!</button>
+    <script>
+        document.getElementById('color').onclick = changeColor;
+        var currentColor = "cornflowerblue";
+
+        function changeColor() {
+            if (currentColor == "cornflowerblue") {
+                document.body.style.color = "green";
+                currentColor = "green";
+            } else {
+                document.body.style.color = "cornflowerblue";
+                currentColor = "cornflowerblue";
+            }
+            return currentColor;
+        }
     </script>
-   
-     <p>   
-    <h1>
-        Hello
-    </h1>
-        
-    <strong>What color do you prefer?</strong> </p>
-    </body>
+
+    <p id="FontFamily">These options will change the font, give it a try!</p>
     
-	<input type="radio" id="color1" name="color" value="blue">Blue<br>
+    <button id='FontFamily'>Change Style!</button>
+    
+    <script>
+        document.getElementById('FontFamily').onclick = changeFontFamily;
+        var currentFontFamily = "Monaco" 
+        
+        function changeFontFamily() {
+            if (currentFontFamily == "Monaco") {
+                document.body.style.fontFamily = "Times New Roman";
+                currentFontFamily = "Times New Roman"
+            } else {
+                document.body.style.fontFamily = "Monaco";
+                currentFontFamily = "Monaco"
+            }
+            return currentFontFamily
+        }
+
+        }
+    </script>
+
+    <p>
+        <h1>
+            Hello
+        </h1>
+
+        <strong>What color do you prefer?</strong>
+    </p>
+</body>
+
+<input type="radio" id="color1" name="color" value="blue">Blue<br>
 <input type="radio" id="color2" name="color" value="red">Red<br><br>
 
 <button type="button" onclick="displayFunction()">Display</button>
-<div id="display"></div> 
-    
+<div id="display"></div>
 
-    function displayFunction("") {
-   var color_value = "";
-   if(document.getElementById("display").checked) {
-  color_value = document.getElementById("color1").value;
-   } else if (document.getElementById("display").checked) { 
-  color_value= document.getElementById('color2').value;
+<script>
+    function displayFunction()
+{
+   if(document.getElementById('color1').checked)
+   {
+     document.getElementById('display').innerHTML = document.getElementById('color1').value;
+   }
+
+   else if(document.getElementById('color2').checked)
+   {
+     document.getElementById('display').innerHTML = document.getElementById('color2').value;
    }
 }
+</script>
 
 
-    <p2>
-        The first button will change the color, Try it!
-    </p2>
+<p2>
+    The first button will change the color, Try it!
+</p2>
+
+<p id="sentance">Lets try changing the font!</p>
+
+<select onchange="myFunction(this);" size="13">
+  <option>Georgia</option>
+  <option>Palatino Linotype</option>
+  <option>Book Antiqua</option>
+  <option>Times New Roman</option>
+  <option>Arial</option>
+  <option>Helvetica</option>
+  <option>Arial Black</option>
+  <option>Impact</option>
+  <option>Lucida Sans Unicode</option>
+  <option>Tahoma</option>
+  <option>Verdana</option>
+  <option>Courier New</option>
+  <option>Lucida Console</option>
+</select>
+ 
+<script>
+function myFunction(selectTag) {
+  var listValue = selectTag.options[selectTag.selectedIndex].text;
+  document.getElementById("sentance").style.fontFamily = listValue;
+}
+</script>
+
+<div id="randomColors"></div>
+<button onclick="newColor()">newColor</button>
+
+<script>
     
-
-
+    var color = ["Blue", "Red", "Green", "Yellow"
+    ]
     
+    function newColor() {
+        var randomNumber = Math.floor(Math.random() * (color.length));
+        document.getElementById('randomColors').innerHTML = color[randomNumber];
+        
+    }
+    
+</script>
+
 
 
 </html>

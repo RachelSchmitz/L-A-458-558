@@ -148,7 +148,7 @@
         }
     </script>
 
-    <p id="FontFamily">Change Style</p>
+    <p3 id="FontFamily">Change Style</p3>
 
     <button id='FontFamily'>Change Style!</button>
 
@@ -193,18 +193,7 @@
         }
     </script>
 
-    <div id="randomColors"></div>
-    <button onclick="newColor()">Random Color Generator</button>
-
-    <script>
-        var color = ["Blue", "Red", "Green", "Yellow", "Orange"]
-
-        function newColor() {
-            var randomNumber = Math.floor(Math.random() * (color.length));
-            document.getElementById('randomColors').innerHTML = color[randomNumber];
-
-        }
-    </script>
+ 
     <p id="sentance"></p>
 
     <script>
@@ -216,7 +205,37 @@
         document.getElementById("sentance").innerHTML =
             sentance.subject + " us " + sentance.adjective + " the " + sentance.type;
     </script>
+    
+   <p id="sentance2"></p>
 
+    <script>
+        var words = {
+            work: "Select",
+            noun: " menu",
+            where: " above!",
+        }
+
+
+        document.getElementById("sentance2").innerHTML =
+            words.work + " from " + " the " +
+        words.noun + words.where;
+    </script>
+    
+       <div id="randomColors"></div>
+    <button onclick="newColor()">Random Color Generator</button>
+
+    <script>
+        var color = ["Blue", "Red", "Green", "Yellow", "Orange"]
+
+        function newColor() {
+            var randomNumber = Math.floor(Math.random() * (color.length));
+            document.getElementById('randomColors').innerHTML = color[randomNumber];
+
+        }
+    </script>
+    
+    <br>
+    <br>
     <p4>Calculate Two Fields</p4>
     <p4 id="answer"></p4>
     <br>
@@ -253,19 +272,7 @@
         while (i < 1)
     </script>
 
-    <p id="sentance2"></p>
+ 
 
-    <script>
-        var words = {
-            work: "Select",
-            noun: " menu",
-            where: " below!",
-        }
-
-
-        document.getElementById("sentance2").innerHTML =
-            words.work + " from " + " the "
-        words.noun + +words.where;
-    </script>
-
-</body></html>
+</body>
+</html>

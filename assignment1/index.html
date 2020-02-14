@@ -41,7 +41,7 @@
 
         .navbar a:hover,
         .dropdown:hover .dropbtn {
-            background-color: whitesmoke;
+            background-color: peachpuff;
         }
 
         .dropdown-content {
@@ -74,7 +74,15 @@
 <title>exercise 1</title>
 
 <body>
-
+<style>
+    h1 {
+  text-shadow: 2px 2px 5px peachpuff;
+}
+    body {
+  background-color: gainsboro;
+}
+    </style>
+    
     <div class="navbar">
         <a href="../index.html">Home</a>
         <div class="dropdown">
@@ -134,7 +142,7 @@
 
     <p>
         <h1>
-            Hello
+            Welcome to the Homepage!
         </h1>
 
         <strong>What color do you prefer?</strong>
@@ -208,6 +216,21 @@ function myFunction(selectTag) {
     
 </script>
 
+      
+                      
+ <p id="sentance"></p>
 
+<script>
+var sentance = {
+  subject: "LA458",
+  adjective: "a great",
+  type: " class!",
+ 
+}
+
+
+document.getElementById("sentance").innerHTML =
+sentance.subject + " is " + sentance.adjective +  sentance.type;
+</script>                     
 
 </html>

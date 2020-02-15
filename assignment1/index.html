@@ -147,8 +147,8 @@
         </p>
 
 
-        <input type="radio" id="color1" name="color" value="blue">Blue<br>
-        <input type="radio" id="color2" name="color" value="red">Red<br><br>
+        <input type="radio" id="color1" name="color" value="cornflowerblue">Cornflowerblue<br>
+        <input type="radio" id="color2" name="color" value="peachpuff">Peach<br><br>
 
         <button type="button" onclick="displayFunction()">Display Answer</button>
         <div id="display"></div>
@@ -179,8 +179,8 @@
 
             function changeColor() {
                 if (currentColor == "cornflowerblue") {
-                    document.body.style.color = "red";
-                    currentColor = "red";
+                    document.body.style.color = "peachpuff";
+                    currentColor = "peachpuff";
                 } else {
                     document.body.style.color = "cornflowerblue";
                     currentColor = "cornflowerblue";
@@ -278,7 +278,7 @@
         <button onclick="newColor()">Random Color Generator</button>
 
         <script>
-            var color = ["Blue", "Red", "Green", "Yellow", "Orange"]
+            var color = ["Blue", "Red", "Green", "Yellow", "Orange", "Purple"]
 
             function newColor() {
                 var randomNumber = Math.floor(Math.random() * (color.length));

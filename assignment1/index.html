@@ -98,17 +98,25 @@
         <h1>Homepage</h1>
     </div>
 
-    <title>assignment1</title>
+    <title>Rachel's Homepage</title>
 
     <body>
         <style>
             h1 {
                 text-shadow: 2px 2px 5px peachpuff;
+                border-style: dotted;
+  border-width: 2px;
+
             }
 
             body {
-                background-color: gainsboro;
+                background-image: url("clouds.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                text-align: center;
             }
+            
 
         </style>
 
@@ -282,14 +290,16 @@
 
         <br>
         <br>
-        <p4>Calculate Two Fields</p4>
+        <p4>Calculate Two Fields:</p4>
         <p4 id="answer"></p4>
         <br>
         <br>
 
-        Number 1<input type="text" id="num1" <br>
+        Number 1<input type="text" id="num1" 
         <br>
-        Number 2<input type="text" id="num2" <br>
+        <br>
+        Number 2<input type="text" id="num2"      
+        <br>
         <br>
         <button onclick="calculate()">Calculate</button>
 

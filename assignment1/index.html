@@ -7,6 +7,7 @@
         body {
             font-family: Monaco, Helvetica, sans-serif;
             color: cornflowerblue
+                
         }
 
         .navbar {
@@ -69,8 +70,34 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
     </style>
 </head>
+    
+    <head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+}
+
+.header {
+  background-image: linear-gradient(to bottom right, #28d7e0, #bcd0d1);
+  padding: 20px;
+  text-align: center;
+}
+    
+     
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Homepage</h1>
+</div>
+    
 <title>assignment1</title>
 
 <body>
@@ -127,10 +154,14 @@
         }
     </script>
 
+    <br>
+    <br>
     <p2>
         This button will change the color, Try it!
     </p2>
-
+    <br>    
+    <br>
+    
     <button id="color">Change color!</button>
     <script>
         document.getElementById('color').onclick = changeColor;
@@ -148,7 +179,12 @@
         }
     </script>
 
+    <br>
+    <br>
     <p3 id="FontFamily">Change Style</p3>
+   
+    <br>
+    <br>
 
     <button id='FontFamily'>Change Style!</button>
 
@@ -169,6 +205,8 @@
     </script>
 
     <p id="sentance">Lets try changing the font!</p>
+   
+    
 
     <select onchange="myFunction(this);" size="13">
         <option>Georgia</option>
@@ -191,6 +229,7 @@
             var listValue = selectTag.options[selectTag.selectedIndex].text;
             document.getElementById("sentance").style.fontFamily = listValue;
         }
+       
     </script>
 
  
@@ -249,16 +288,16 @@
 
     <script>
         function calculate() {
-            var field1 = document.getElementById(num1).value;
-            var field2 = document.getElementById(num2).value;
+            var field1 = document.getElementById("num1").value;
+            var field2 = document.getElementById("num2").value;
 
             var result = parseFloat(field1) + parseFloat(field2)
 
             if (!isNaN(result))
 
             {
-                document.getElementById("answer").innerHTML = "The answer is " + result;
-
+                document.getElementById("answer").textContent = "The answer is " + result;
+            }
             }
     </script>
 
@@ -272,6 +311,7 @@
         while (i < 1)
     </script>
 
+   
  
 
 </body>

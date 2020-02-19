@@ -38,6 +38,8 @@
     <a href="javascript:zoomOut()">Zoom Out</a><br>
 
     <button id="marquetteBtn">Visit Marquette, Iowa</button>
+    
+    <button id="adahayden">Visit Ada Hayden</button>
 
 
     <script>
@@ -56,29 +58,31 @@
         
    L.circle([43.042778,-91.184167], {radius: 1200}).addTo(map);
         
-        L.circle([42.026111, -93.648333], {radius: 1200}).addTo(map);
+    L.circle([42.026111, -93.648333], {radius: 1200}).addTo(map);
 
         
         var towns = [
             [41.590833, -93.620833, "Des Moines, Iowa"],
             [42.034722, -93.62, "Ames, Iowa"],
             [42.019167, -93.451667, "Nevada, Iowa"],
-            [43.042778, -91.184167, "Marquette, Iowa"]
+            [43.042778, -91.184167, "Marquette, Iowa"],
+            [42.0724792, -93.6263344, "Ada Hayden Park"]
         ];
 
 
         for (var i = 0; i < towns.length; i++) {
             marker = new L.marker([towns[i][0], towns[i][1]])
-                .bindPopup(towns[i][3])
+                .bindPopup(towns[i][4])
                 .addTo(map);
         }
 
 
+        
+        
         function ames() {
             map.panTo(new L.LatLng(42.034722, -93.62));
         }
 
-  
         function zoomOut() {
             map.setZoom(8);
         };
@@ -88,6 +92,13 @@
         function marquette() {
             map.setView(new L.LatLng(43.042778, -91.184167), 13);
         };    
+        
+         document.getElementById("adahayden").addEventListener("click", adahayden);
+
+        
+        function adahayden() {
+            map.setView(new L.LatLng(42.0724792, -93.6263344), 13);
+        };
     </script>
 
 </body>

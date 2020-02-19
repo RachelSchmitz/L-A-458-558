@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="description" content="LA/CRP 458/558 Leaflet starter file - 2020">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Getting Started with Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+    <style>
+        #map {
+            width: 700px;
+            height: 500px;
+        }
+       body
+
+        { text-align: center; 
+        font-family: fantasy;
+        color: blue;
+        background-color: peachpuff
+        }
+        
+    </style>
+
+</head>
+
+<body>
+    <div id='map'></div>
+    
+    <br>Pan to <a href="javascript:ames()">Ames, Iowa</a><br>
+
+    <a href="javascript:zoomOut()">Zoom Out</a><br>
+
+    <button id="marquetteBtn">Visit Marquette, Iowa</button>
+
+
+    <script>
+        var map = L.map('map').setView([42.0, -93.634], 13);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            accessToken: 'pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg' 
+        }).addTo(map);
+
+        L.marker([42.026111, -93.648333]).addTo(map)
+            .bindPopup("Iowa State University")
+            .openPopup();
+        
+   L.circle([43.042778,-91.184167], {radius: 1200}).addTo(map);
+        
+        L.circle([42.026111, -93.648333], {radius: 1200}).addTo(map);
+
+        
+        var towns = [
+            [41.590833, -93.620833, "Des Moines, Iowa"],
+            [42.034722, -93.62, "Ames, Iowa"],
+            [42.019167, -93.451667, "Nevada, Iowa"],
+            [43.042778, -91.184167, "Marquette, Iowa"]
+        ];
+
+
+        for (var i = 0; i < towns.length; i++) {
+            marker = new L.marker([towns[i][0], towns[i][1]])
+                .bindPopup(towns[i][3])
+                .addTo(map);
+        }
+
+
+        function ames() {
+            map.panTo(new L.LatLng(42.034722, -93.62));
+        }
+
+  
+        function zoomOut() {
+            map.setZoom(8);
+        };
+        document.getElementById("marquetteBtn").addEventListener("click", marquette);
+
+        
+        function marquette() {
+            map.setView(new L.LatLng(43.042778, -91.184167), 13);
+        };    
+    </script>
+
+</body>
+</html>

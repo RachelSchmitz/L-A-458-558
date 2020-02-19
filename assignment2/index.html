@@ -58,7 +58,7 @@
         
    L.circle([43.042778,-91.184167], {radius: 1200}).addTo(map);
         
-    L.circle([42.026111, -93.648333], {radius: 1200}).addTo(map);
+        L.circle([42.026111, -93.648333], {radius: 1200}).addTo(map);
 
         
         var towns = [
@@ -76,9 +76,26 @@
                 .addTo(map);
         }
 
+        var circles = [
+            [41.590833, -93.620833, "Des Moines, Iowa"],
+            [42.034722, -93.62, "Ames, Iowa"],
+            [42.019167, -93.451667, "Nevada, Iowa"],
+            [43.042778, -91.184167, "Marquette, Iowa"],
+            [42.0724792, -93.6263344, "Ada Hayden Park"]
+        ];
 
-        
-        
+var circlearray = [];
+
+circles.forEach(function (circle) {
+  var onecircle =  L.circle(circle, {
+    color: "cornflowerblue",
+    fillColor: "lightblue",
+    fillOpacity: 0.5,
+    radius: 1200
+    }).addTo(map);
+  circlearray.push(onecircle);
+}) 
+
         function ames() {
             map.panTo(new L.LatLng(42.034722, -93.62));
         }

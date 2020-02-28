@@ -6,31 +6,61 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Leaflet-Assignment 2</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-        crossorigin=""></script>
-<script>
-        var map = L.map('map').setView([42.0, -93.634], 13);
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+    <style>
+        #map {
+            width: 700px;
+            height: 500px;
+        }
+
+        body {
+            text-align: center;
+            font-family: serif;
+            color: blue;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div id='map'></div>
+
+    <br>Pan to <a href="javascript:ames()">Ames, Iowa</a><br>
+
+    <a href="javascript:zoomOut()">Zoom Out</a><br>
+
+    <button id="marquetteBtn">Visit Marquette, Iowa</button>
+
+    <button id="adahayden">Visit Ada Hayden</button>
+
+
+    <script>
+        var map = L.map('map').setView([42.0, -93.634], 13)
+        layers: [OpenStreetMap_Mapnik, ];
 
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox/streets-v11',
-            accessToken: 'pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg' 
+            accessToken: 'pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg'
         }).addTo(map);
 
         L.marker([42.026111, -93.648333]).addTo(map)
             .bindPopup("Iowa State University")
             .openPopup();
-        
-   L.circle([43.042778,-91.184167], {radius: 1200}).addTo(map);
-        
-        L.circle([42.026111, -93.648333], {radius: 1200}).addTo(map);
 
-        
+        L.circle([43.042778, -91.184167], {
+            radius: 1200
+        }).addTo(map);
+
+        L.circle([42.026111, -93.648333], {
+            radius: 1200
+        }).addTo(map);
+
+
         var towns = [
             [41.590833, -93.620833, "Des Moines, Iowa"],
             [42.034722, -93.62, "Ames, Iowa"],
@@ -54,17 +84,17 @@
             [42.0724792, -93.6263344, "Ada Hayden Park"]
         ];
 
-var circlearray = [];
+        var circlearray = [];
 
-circles.forEach(function (circle) {
-  var onecircle =  L.circle(circle, {
-    color: "cornflowerblue",
-    fillColor: "lightblue",
-    fillOpacity: 0.5,
-    radius: 1200
-    }).addTo(map);
-  circlearray.push(onecircle);
-}) 
+        circles.forEach(function(circle) {
+            var onecircle = L.circle(circle, {
+                color: "cornflowerblue",
+                fillColor: "lightblue",
+                fillOpacity: 0.5,
+                radius: 1200
+            }).addTo(map);
+            circlearray.push(onecircle);
+        })
 
         function ames() {
             map.panTo(new L.LatLng(42.034722, -93.62));
@@ -75,18 +105,70 @@ circles.forEach(function (circle) {
         };
         document.getElementById("marquetteBtn").addEventListener("click", marquette);
 
-        
+
         function marquette() {
             map.setView(new L.LatLng(43.042778, -91.184167), 13);
-        };    
-        
-         document.getElementById("adahayden").addEventListener("click", adahayden);
+        };
 
-        
+        document.getElementById("adahayden").addEventListener("click", adahayden);
+
+
         function adahayden() {
             map.setView(new L.LatLng(42.0724792, -93.6263344), 13);
         };
+
+        //Base Layers
+
+        var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+
+        });
+        var nexrad = new L.tileLayer.wms("https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
+            layers: 'nexrad-n0r-900913',
+            format: 'image/png',
+            transparent: true,
+            attribution: "Weather data &copy; 2012 IEM Nexrad"
+        });
+
+        var grayscale = L.tileLayer(mapboxUrl, {
+                id: 'MapID',
+                tileSize: 512,
+                zoomOffset: -1,
+                attribution: mapboxAttribution
+            }),
+            streets = L.tileLayer(mapboxUrl, {
+                id: 'MapID',
+                tileSize: 512,
+                zoomOffset: -1,
+                attribution: mapboxAttribution
+            });
+
+        var map = L.map('map', {
+            center: [39.73, -104.99],
+            zoom: 10,
+            layers: [grayscale, cities]
+        });
+
+        //layer control 
+
+        var baseMaps = {
+            "OpenStreetMap_Mapnik": OSM,
+            "Grayscale": grayscale,
+            "Streets": streets
+        }
+        var overlayMaps = {
+            "Cities": cities,
+            "Radar": nexrad,
+
+        };
+        
+        layerControl = L.control.layers(baseMaps, overlayMaps);
+
+        L.control.layers(baseMaps, overlayMaps).addTo(map);
+
     </script>
-    
+
 </body>
+
 </html>

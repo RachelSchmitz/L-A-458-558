@@ -28,15 +28,6 @@
 <body>
     <div id='map'></div>
 
-    <br>Pan to <a href="javascript:ames()">Ames, Iowa</a><br>
-
-    <a href="javascript:zoomOut()">Zoom Out</a><br>
-
-    <button id="marquetteBtn">Visit Marquette, Iowa</button>
-
-    <button id="adahayden">Visit Ada Hayden</button>
-
-
     <script>
         var map = L.map('map').setView([42.0, -93.634], 13)
         layers: [OpenStreetMap_Mapnik, ];
@@ -106,24 +97,6 @@
         document.getElementById("marquetteBtn").addEventListener("click", marquette);
 
 
-        function marquette() {
-            map.setView(new L.LatLng(43.042778, -91.184167), 13);
-        };
-
-        document.getElementById("adahayden").addEventListener("click", adahayden);
-
-
-        function adahayden() {
-            map.setView(new L.LatLng(42.0724792, -93.6263344), 13);
-        };
-
-        //Base Layers
-
-        var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-
-        });
         var nexrad = new L.tileLayer.wms("https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
             layers: 'nexrad-n0r-900913',
             format: 'image/png',
@@ -153,12 +126,11 @@
         //layer control 
 
         var baseMaps = {
-            "OpenStreetMap_Mapnik": OSM,
+            "OpenStreetMap": OpenStreetMap_Mapnik,
             "Grayscale": grayscale,
             "Streets": streets
         }
         var overlayMaps = {
-            "Cities": cities,
             "Radar": nexrad,
 
         };

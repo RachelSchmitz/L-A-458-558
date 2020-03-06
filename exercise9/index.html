@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Choropleth Tutorial - Leaflet</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+
+	<style>
+		
+        html, body {
+			height: 100%;
+			margin: 0;
+		}
+		
+        #map {
+			width: 600px;
+			height: 400px;
+		}
+	    
+        #map { width: 800px; height: 500px; }
+        
+    </style>
+
+</head>
+
+<body>
+
+<div id='map'></div>
+
+<script type="text/javascript" src="../geojson/us-states.js"></script>
+
+<script type="text/javascript">
+
+        var map = L.map('map').setView([37.8, -96], 4);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            // This is a unique access token, you must register for your own from https://account.mapbox.com/access-tokens/
+            accessToken: 'pk.eyJ1IjoiYmFoYW5zb24xIiwiYSI6Ijh4M01DV0EifQ.89guWCOKWC9A1vSbA7fiPg' 
+        }).addTo(map);
+
+	// get color depending on population density value
+	function getColor(d) {
+		return d > 1000 ? '#253494' :
+				d > 500  ? '#2c7fb8' :
+				d > 200  ? '#41b6c4' :
+				d > 100   ? '#7fcdbb' :
+				d > 50   ? '#c7e9b4' :
+							'#ffffcc';
+	}
+
+	function style(feature) {
+		return {
+			weight: 1,
+			opacity: 1,
+			color: 'white',
+			fillOpacity: 0.7,
+			fillColor: getColor(feature.properties.density)
+		};
+	}
+
+	function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 2,
+			color: 'black',
+			dashArray: '',
+			fillOpacity: 0.7
+		});
+
+		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+			layer.bringToFront();
+		}
+
+	}
+
+	var geojson;
+
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+	}
+
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
+
+	geojson = L.geoJson(statesData, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);
+
+	map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
+
+   
+</script>
+
+</body>
+</html>

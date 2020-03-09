@@ -65,7 +65,7 @@
   <script type="text/javascript"
     src="https://leafletjs.com/examples/choropleth/us-states.js" ></script>
 
-<script src="https://rachelschmitz.github.io/L-A-458-558/geojson/Wetland.geojson"></script>
+<script src="https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson"></script>
     
   <script type="text/javascript">
           var map = L.map('map').setView([37.8, -96], 4);
@@ -202,6 +202,20 @@
       
   </script>
     
+    <script>
+     L.geoJSON(cities).addTo(map);
+      
+      var baseMaps = {
+          "States": statesData
+      };
+      
+      var overlayMaps = {
+          "cities": cities,
+      };
+      
+      L.control.layers(baseMaps, overlayMaps).addTo(map);
+     
+    </script>
    
 </body>
 </html>

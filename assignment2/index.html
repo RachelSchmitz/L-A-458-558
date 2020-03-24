@@ -71,7 +71,7 @@
     <script type="text/javascript">
         var map = L.map('map').setView([37.8, -96], 4);
 
-        L.tileLayer('https://api.mapbox.com/styles/v1/rachelschmitz/basic/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg', {
+       var myBasemap= L.tileLayer('https://api.mapbox.com/styles/v1/rachelschmitz/basic/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox/streets-v11',
@@ -318,7 +318,8 @@
         L.geoJSON(cities).addTo(map);
 
         var baseMaps = {
-            "Basic": basic
+            "Basic": basic,
+            "States": us-states
         };
 
         var overlayMaps = {

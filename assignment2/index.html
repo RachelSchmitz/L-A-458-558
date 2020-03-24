@@ -281,11 +281,13 @@
             position: "bottomleft"
         });
 
+//Population Density Gradients
         legend.onAdd = function(map) {
             var div = L.DomUtil.create("div", "info legend"),
                 grades = [0, 25000, 50000, 100000, 200000, 300000, 400000, 500000],
                 labels = [""],
-
+                
+//Set color for population density
 
                 for (var i = 0; i < grades.length; i++) {
                     from = grades[i];

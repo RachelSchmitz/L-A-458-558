@@ -1,6 +1,77 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Monaco, Helvetica, sans-serif;
+            color: cornflowerblue
+        }
 
+        .navbar {
+            overflow: hidden;
+            background-color: peachpuff;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: center;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: black;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: peachpuff;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+    </style>
+</head>
 <head>
     <title>Choropleth Leaflet</title>
     <meta charset="utf-8">
@@ -70,14 +141,18 @@
 
     <script type="text/javascript">
         var map = L.map('map').setView([37.8, -96], 4);
-
-       var myBasemap= L.tileLayer('https://api.mapbox.com/styles/v1/rachelschmitz/basic/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg', {
+//Basemap
+        var myBasemap = L.tileLayer('https://api.mapbox.com/styles/v1/rachelschmitz/basic/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox/streets-v11',
             accessToken: 'pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg'
         }).addTo(map);
+//Overlay Maps
 
+          var overlayMaps =
+            var us-states = L.tileLayer("https://leafletjs.com/examples/choropleth/us-states.js");
+        var cities = L.geoJSON("https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson".addTo(map));
 
         var info = L.control();
 
@@ -164,8 +239,8 @@
                 click: zoomToFeature
             });
         }
-//adding us-states to map
-        geojson = L.geoJson(us-states, {
+        //adding us-states to map
+        geojson = L.geoJson(us - states, {
             style: style,
             onEachFeature: onEachFeature
         }).addTo(map);
@@ -276,18 +351,18 @@
             'Population data &copy; <a href="http://census.gov/">US Census Bureau</a>'
         );
 
-//Legend
+        //Legend
         var legend = L.control({
             position: "bottomleft"
         });
 
-//Population Density Gradients
+        //Population Density Gradients
         legend.onAdd = function(map) {
             var div = L.DomUtil.create("div", "info legend"),
                 grades = [0, 25000, 50000, 100000, 200000, 300000, 400000, 500000],
                 labels = [""],
-                
-//Set color for population density
+
+                //Set color for population density
 
                 for (var i = 0; i < grades.length; i++) {
                     from = grades[i];
@@ -308,22 +383,18 @@
 
         legend.addTo(map);
 
-var overlayMaps=
-var us-states = L.tileLayer("https://leafletjs.com/examples/choropleth/us-states.js");
-var cities = L.geoJSON("https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson".addTo(map));
 
-
-//    layer control
+        //    layer control
 
         L.geoJSON(cities).addTo(map);
 
         var myBasemap = {
             "Basic": Basic,
-            
-        var overlayMaps = {
-            "cities": cities,
-            "States": us-states
-        };
+
+            var overlayMaps = {
+                "cities": cities,
+                "States": us-states
+            };
 
         };
 
@@ -331,6 +402,7 @@ var cities = L.geoJSON("https://rachelschmitz.github.io/L-A-458-558/geojson/citi
 
     </script>
 
+    
 </body>
 
 </html>

@@ -89,7 +89,7 @@
             this.update();
             return this._div;
         };
-
+//Hover over state function
         info.update = function(props) {
             this._div.innerHTML =
                 "<h4>US Population Density</h4>" +
@@ -103,7 +103,7 @@
         };
 
         info.addTo(map);
-
+//need to change numbers
         function getColor(d) {
             return d > 1000 ?
                 "#016450" :
@@ -166,7 +166,7 @@
             });
         }
         //adding us-states to map
-        geojson = L.geoJson(us - states, {
+        geojson = L.geoJson(us-states, {
             style: style,
             onEachFeature: onEachFeature
         }).addTo(map);
@@ -311,9 +311,8 @@
 
 
         //    layer control
-
-        L.geoJSON(cities).addTo(map);
-
+        
+        
         var myBasemap = {
             "Basic": Basic,
 

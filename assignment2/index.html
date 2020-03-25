@@ -308,8 +308,8 @@
 
         legend.addTo(map);
 
-var Basic = L.geoJSON("https://api.mapbox.com/styles/v1/rachelschmitz/basic/tiles/256/{z}/{x}/{y}?".addTo(map));
-var us-states = L.geoJSON("https://leafletjs.com/examples/choropleth/us-states.js".addTo(map));
+var overlayMaps=
+var us-states = L.tileLayer("https://leafletjs.com/examples/choropleth/us-states.js");
 var cities = L.geoJSON("https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson".addTo(map));
 
 
@@ -317,13 +317,14 @@ var cities = L.geoJSON("https://rachelschmitz.github.io/L-A-458-558/geojson/citi
 
         L.geoJSON(cities).addTo(map);
 
-        var baseMaps = {
+        var myBasemap = {
             "Basic": Basic,
+            
+        var overlayMaps = {
+            "cities": cities,
             "States": us-states
         };
 
-        var overlayMaps = {
-            "cities": cities,
         };
 
         L.control.layers(baseMaps, overlayMaps).addTo(map);

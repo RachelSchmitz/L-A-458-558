@@ -1,333 +1,320 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Assignment2</title>
-    <meta charset="utf-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==">
-
-    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="></script>
-
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        #map {
-            width: 600px;
-            height: 400px;
+        body {
+            font-family: Monaco, Helvetica, sans-serif;
+            color: cornflowerblue
         }
 
-    </style>
-
-    <style>
-        #map {
-            width: 800px;
-            height: 500px;
+        .navbar {
+            overflow: hidden;
+            background-color: peachpuff;
         }
 
-        .info {
-            padding: 6px 8px;
-            font: 14px/16px Arial, Helvetica, sans-serif;
-            background: white;
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-        }
-
-        .info h4 {
-            margin: 0 0 5px;
-            color: #777;
-        }
-
-        .legend {
-            text-align: left;
-            line-height: 18px;
-            color: #555;
-        }
-
-        .legend i {
-            width: 18px;
-            height: 18px;
+        .navbar a {
             float: left;
-            margin-right: 8px;
-            opacity: 0.7;
+            font-size: 16px;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: center;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: black;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: peachpuff;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+          .header {
+            background-image: linear-gradient(to bottom right, #28d7e0, #bcd0d1);
+            padding: 20px;
+            text-align: center;
         }
 
     </style>
+        
+</head>
+<head>
+  <title>Choropleth Leaflet</title>
+  <meta charset="utf-8">
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon"
+    type="image/x-icon"
+    href="docs/images/favicon.ico">
+
+  <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+    integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+    crossorigin>
+
+  <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+    integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+          crossorigin=""></script>
+    
+    <style>
+    #map {
+      width: 600px;
+      height: 400px;
+    }
+  </style>
+
+  <style>
+    #map {
+      width: 800px;
+      height: 500px;
+    }
+  
+    .legend {
+      text-align: left;
+      line-height: 18px;
+      color: #555;
+    }
+    .legend i {
+      width: 18px;
+      height: 18px;
+      float: left;
+      margin-right: 8px;
+      opacity: 0.7;
+    }
+  </style>
 </head>
 
 <body>
-    <div id="map" />
+  <div id="map" />
+     <div class="navbar">
+            <a href="../assignment1/index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">Exercises and Assignments
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="../exercise1/index.html">exercise1</a>
 
-    <!--map layers-->
-    <script src="https://api.mapbox.com/styles/v1/rachelschmitz/ck851aop00fxo1hnvm3f0ple8.html?fresh=true&title=copy&access_token=pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg"></script>
+                    <a href="../exercise2/index.html">exercise2</a>
 
-    <script type="text/javascript" src="https://leafletjs.com/examples/choropleth/us-states.js"></script>
+                    <a href="../Exercise3/">exercise3</a>
 
-    <script src="https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson"></script>
+                    <a href="https://rachelschmitz.github.io/L-A-458-558/exercise4/exercise4/index.html#7/42.174/-94.542">exercise4</a>
+                </div>
 
-    <script>
-        var map = L.map('map').setView([37.8, -96], 4);
-//Basemap
-        var myBasemap = L.tileLayer('https://api.mapbox.com/styles/v1/rachelschmitz/basic/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg', {
+  <script type="text/javascript"
+    src="https://leafletjs.com/examples/choropleth/us-states.js" ></script>
+
+<script src="https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson"></script>
+    
+  <script type="text/javascript">
+          var map = L.map('map').setView([37.8, -96], 4);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox/streets-v11',
-            accessToken: 'pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg'
+            accessToken: 'pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg' 
         }).addTo(map);
-//Overlay Maps
+    
 
-          var overlayMaps =
-            var us-states = L.tileLayer("https://leafletjs.com/examples/choropleth/us-states.js");
-        var cities = L.geoJSON("https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson".addTo(map));
 
-        var info = L.control();
+    function getColor(d) {
+      return d > 1000
+        ? "#016450"
+        : d > 500
+          ? "#016c59"
+          : d > 200
+            ? "#1c9099"
+            : d > 100
+              ? "#67a9cf"
+              : d > 50
+                ? "#a6bddb"
+                : d > 20 ? "#d0d1e6" 
+                : d > 10 ? "#f6eff7" : "#fff7fb";
+    }
 
-        //      functions for map attributes
+    function style(feature) {
+      return {
+        weight: 2,
+        opacity: 1,
+        color: "white",
+        dashArray: "3",
+        fillOpacity: 0.7,
+        fillColor: getColor(feature.properties.density)
+      };
+    }
 
-        info.onAdd = function(map) {
-            this._div = L.DomUtil.create("div", "info");
-            this.update();
-            return this._div;
-        };
-//Hover over state function
-        info.update = function(props) {
-            this._div.innerHTML =
-                "<h4>US Population Density</h4>" +
-                (props ?
-                    "<b>" +
-                    props.name +
-                    "</b><br />" +
-                    props.density +
-                    " people / mi<sup>2</sup>" :
-                    "Hover over a state");
-        };
+    function highlightFeature(e) {
+      var layer = e.target;
 
-        info.addTo(map);
-//need to change numbers
-        function getColor(d) {
-            return d > 1000 ?
-                "#016450" :
-                d > 500 ?
-                "#016c59" :
-                d > 200 ?
-                "#1c9099" :
-                d > 100 ?
-                "#67a9cf" :
-                d > 50 ?
-                "#a6bddb" :
-                d > 20 ? "#d0d1e6" :
-                d > 10 ? "#f6eff7" : "#fff7fb";
-        }
+      layer.setStyle({
+        weight: 5,
+        color: "#666",
+        dashArray: "",
+        fillOpacity: 0.7
+      });
 
-        function style(feature) {
-            return {
-                weight: 2,
-                opacity: 1,
-                color: "white",
-                dashArray: "3",
-                fillOpacity: 0.7,
-                fillColor: getColor(feature.properties.density)
-            };
-        }
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
 
-        function highlightFeature(e) {
-            var layer = e.target;
+      info.update(layer.feature.properties);
+    }
 
-            layer.setStyle({
-                weight: 5,
-                color: "#666",
-                dashArray: "",
-                fillOpacity: 0.7
-            });
+    var geojson;
 
-            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-                layer.bringToFront();
-            }
+    function resetHighlight(e) {
+      geojson.resetStyle(e.target);
+      info.update();
+    }
 
-            info.update(layer.feature.properties);
-        }
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
 
-        var geojson;
+    function onEachFeature(feature, layer) {
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+      });
+    }
 
-        function resetHighlight(e) {
-            geojson.resetStyle(e.target);
-            info.update();
-        }
+    geojson = L.geoJson(statesData, {
+      style: style,
+      onEachFeature: onEachFeature
+    }).addTo(map);
 
-        function zoomToFeature(e) {
-            map.fitBounds(e.target.getBounds());
-        }
+    map.attributionControl.addAttribution(
+      'Population data &copy; <a href="http://census.gov/">US Census Bureau</a>'
+    );
+      
 
-        function onEachFeature(feature, layer) {
-            layer.on({
-                mouseover: highlightFeature,
-                mouseout: resetHighlight,
-                click: zoomToFeature
-            });
-        }
-        //adding us-states to map
-        geojson = L.geoJson(us-states, {
-            style: style,
-            onEachFeature: onEachFeature
-        }).addTo(map);
+    var legend = L.control({ position: "bottomright" });
 
-        map.attributionControl.addAttribution(
-            'Population data &copy; <a href="http://census.gov/">US Census Bureau</a>'
+    legend.onAdd = function(map) {
+      var div = L.DomUtil.create("div", "info legend"),
+        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+        labels = [""],
+        from,
+        to;
+
+      for (var i = 0; i < grades.length; i++) {
+        from = grades[i];
+        to = grades[i + 1];
+
+        labels.push(
+          '<i style="background:' +
+            getColor(from + 1) +
+            '"></i> ' +
+            from +
+            (to ? "&ndash;" + to : "+")
         );
+      }
 
+      div.innerHTML = labels.join("<br>");
+      return div;
+    };
 
-        var legend = L.control({
-            position: "bottomright"
-        });
-
-        legend.onAdd = function(map) {
-            var div = L.DomUtil.create("div", "info legend"),
-                grades = [0, 10, 20, 50, 100, 200, 500, 1000],
-                labels = [""],
-                from,
-                to;
-
-            for (var i = 0; i < grades.length; i++) {
-                from = grades[i];
-                to = grades[i + 1];
-
-                labels.push(
-                    '<i style="background:' +
-                    getColor(from + 1) +
-                    '"></i> ' +
-                    from +
-                    (to ? "&ndash;" + to : "+")
-                );
-            }
-
-            div.innerHTML = labels.join("<br>");
-            return div;
-        };
-
-        legend.addTo(map);
-
-        function getColor(d) {
-            return d > 500000 ?
-                "#b10026" :
-                d > 400000 ?
-                "#e31a1c" :
-                d > 300000 ?
-                "#fc4e2a" :
-                d > 200000 ?
-                "#fd8d3c" :
-                d > 100000 ?
-                "#feb24c" :
-                d > 50000 ? "#fed976" :
-                d > 25000 ? "#ffeda0" : "##ffffcc";
-        }
-
-        function style(feature) {
-            return {
-                weight: 2,
-                opacity: 1,
-                color: "white",
-                dashArray: "3",
-                fillOpacity: 0.9,
-                fillColor: getColor(feature.properties.pop)
-            };
-        }
-
-        function highlightFeature(e) {
-            var layer = e.target;
-
-            layer.setStyle({
-                weight: 5,
-                color: "#666",
-                dashArray: "",
-                fillOpacity: 0.5
-            });
-
-            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-                layer.bringToFront();
-            }
-
-            info.update(layer.feature.properties);
-        }
-
-        var geojson;
-
-        function resetHighlight(e) {
-            geojson.resetStyle(e.target);
-            info.update();
-        }
-
-        function zoomToFeature(e) {
-            map.fitBounds(e.target.getBounds());
-        }
-
-        function onEachFeature(feature, layer) {
-            layer.on({
-                mouseover: highlightFeature,
-                mouseout: resetHighlight,
-                click: zoomToFeature
-            });
-        }
-
-        geojson = L.geoJson(citiesData, {
-            style: style,
-            onEachFeature: onEachFeature
-        }).addTo(map);
-
-        map.attributionControl.addAttribution(
-            'Population data &copy; <a href="http://census.gov/">US Census Bureau</a>'
-        );
-
-        //Legend
-        var legend = L.control({
-            position: "bottomleft"
-        });
-
-        //Population Density Gradients
-        legend.onAdd = function(map) {
-            var div = L.DomUtil.create("div", "info legend"),
-                grades = [0, 25000, 50000, 100000, 200000, 300000, 400000, 500000],
-                labels = [""],
-
-                //Set color for population density
-
-                for (var i = 0; i < grades.length; i++) {
-                    from = grades[i];
-                    to = grades[i + 1];
-
-                    labels.push(
-                        '<i style="background:' +
-                        getColor(from + 1) +
-                        '"></i> ' +
-                        from +
-                        (to ? "&ndash;" + to : "+")
-                    );
-                }
-
-            div.innerHTML = labels.join("<br>");
-            return div;
-        };
-
-        legend.addTo(map);
-
-
-        //    layer control
-        
-        
-        var myBasemap = {
-            "Basic": Basic,
-
-            var overlayMaps = {
-                "cities": cities,
-                "States": us-states
-            };
-
-        };
-
-        L.control.layers(baseMaps, overlayMaps).addTo(map);
-
-    </script>
+    legend.addTo(map);
+      
+  </script>
 
     
-</body>
+<script>
 
+    geojson = L.geoJson(citiesData, {
+      style: style,
+      onEachFeature: onEachFeature
+    }).addTo(map);
+      
+
+    var legend = L.control({ position: "bottomleft" });
+
+    legend.onAdd = function(map) {
+      var div = L.DomUtil.create("div", "info legend"),
+        grades = [0, 25000, 50000, 100000, 200000, 300000, 400000, 500000],
+        labels = [""],
+    
+
+      for (var i = 0; i < grades.length; i++) {
+        from = grades[i];
+        to = grades[i + 1];
+
+        labels.push(
+          '<i style="background:' +
+            getColor(from + 1) +
+            '"></i> ' +
+            from +
+            (to ? "&ndash;" + to : "+")
+        );
+      }
+
+
+    legend.addTo(map);
+    
+    
+    </script>
+    
+    
+    <script>
+     L.geoJSON(cities).addTo(map);
+      
+      var baseMaps = {
+          "States": statesData
+      };
+      
+      var overlayMaps = {
+          "cities": cities,
+          "States": statesData
+      };
+      
+      L.control.layers(baseMaps, overlayMaps).addTo(map);
+     
+    </script>
+   
+</body>
 </html>

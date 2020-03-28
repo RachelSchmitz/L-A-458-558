@@ -1,83 +1,5 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        body {
-            font-family: Monaco, Helvetica, sans-serif;
-            color: cornflowerblue
-        }
-
-        .navbar {
-            overflow: hidden;
-            background-color: peachpuff;
-        }
-
-        .navbar a {
-            float: left;
-            font-size: 16px;
-            color: black;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .dropdown {
-            float: center;
-            overflow: hidden;
-        }
-
-        .dropdown .dropbtn {
-            font-size: 16px;
-            border: none;
-            outline: none;
-            color: black;
-            padding: 14px 16px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
-        }
-
-        .navbar a:hover,
-        .dropdown:hover .dropbtn {
-            background-color: peachpuff;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            float: none;
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-          .header {
-            background-image: linear-gradient(to bottom right, #28d7e0, #bcd0d1);
-            padding: 20px;
-            text-align: center;
-        }
-
-    </style>
-        
-</head>
 <head>
   <title>Choropleth Leaflet</title>
   <meta charset="utf-8">
@@ -103,13 +25,6 @@
       width: 600px;
       height: 400px;
     }
-  </style>
-
-  <style>
-    #map {
-      width: 800px;
-      height: 500px;
-    }
   
     .legend {
       text-align: left;
@@ -124,30 +39,15 @@
       opacity: 0.7;
     }
   </style>
+    
 </head>
 
 <body>
   <div id="map" />
-     <div class="navbar">
-            <a href="../assignment1/index.html">Home</a>
-            <div class="dropdown">
-                <button class="dropbtn">Exercises and Assignments
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="../exercise1/index.html">exercise1</a>
-
-                    <a href="../exercise2/index.html">exercise2</a>
-
-                    <a href="../Exercise3/">exercise3</a>
-
-                    <a href="https://rachelschmitz.github.io/L-A-458-558/exercise4/exercise4/index.html#7/42.174/-94.542">exercise4</a>
-                </div>
 
   <script type="text/javascript"
     src="https://leafletjs.com/examples/choropleth/us-states.js" ></script>
 
-<script src="https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson"></script>
     
   <script type="text/javascript">
           var map = L.map('map').setView([37.8, -96], 4);
@@ -266,13 +166,6 @@
     
 <script>
 
-    geojson = L.geoJson(citiesData, {
-      style: style,
-      onEachFeature: onEachFeature
-    }).addTo(map);
-      
-
-    var legend = L.control({ position: "bottomleft" });
 
     legend.onAdd = function(map) {
       var div = L.DomUtil.create("div", "info legend"),
@@ -280,19 +173,7 @@
         labels = [""],
     
 
-      for (var i = 0; i < grades.length; i++) {
-        from = grades[i];
-        to = grades[i + 1];
-
-        labels.push(
-          '<i style="background:' +
-            getColor(from + 1) +
-            '"></i> ' +
-            from +
-            (to ? "&ndash;" + to : "+")
-        );
-      }
-
+ 
 
     legend.addTo(map);
     
@@ -301,14 +182,13 @@
     
     
     <script>
-     L.geoJSON(cities).addTo(map);
+
       
       var baseMaps = {
           "States": statesData
       };
       
       var overlayMaps = {
-          "cities": cities,
           "States": statesData
       };
       

@@ -95,9 +95,10 @@
 <!--    legend and map style-->
     <style>
     #map {
-      width: 600px;
-      height: 400px;
+      width: 900px;
+      height: 600px;
     align-content: center;
+    z-index: 0;
     }
   
     .legend {
@@ -118,8 +119,8 @@
 
 <body>
     
-<!--buttons-->
-    
+
+<!--    Nav Bar-->
          <div class="navbar">
             <a href="../assignment1/index.html">Home</a>
             <div class="dropdown">
@@ -145,9 +146,14 @@
                 </div>
             </div>
         </div>
+<!--Map Div-->
+    <div id="map" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"tabindex="0" style="position:relative; outline: none"></div>
+    <!--buttons-->
+    
      <button id="yellowstoneBtn">Visit Yellowstone</button>
     
     <button id="effigy">Visit Effigy Mounds</button>
+    
     <button id="resetZoom">Reset Zoom</button>
     
 <!--    maps-->
@@ -167,18 +173,19 @@
        var myBasemap =  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
+           minZoom:4,
             id: 'mapbox/streets-v11',
             accessToken: 'pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg' 
         }).addTo(map);
 
         var statesData = L.geoJson(statesData, {
       style: style,
-      onEachFeature: onEachFeature
+      // onEachFeature: onEachFeature
     }).addTo(map);
       
-      var wildernessAreas = L.tileLayer.GeoJSON("https://rachelschmitz.github.io/L-A-458-558/assignment2/NationalWilderness/wildernessAreas.geojson").addTo(map);
+      var wildernessAreas = L.geoJSON(wildernessAreas).addTo(map);
 
-      var cities = L.tileLayer.GeoJSON("https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson").addTo(map);
+      var cities = L.geoJSON("cities").addTo(map);
     
     function getColor(d) {
       return d > 1000
@@ -206,42 +213,42 @@
       };
     }
 
-    function highlightFeature(e) {
-      var layer = e.target;
-
-      layer.setStyle({
-        weight: 5,
-        color: "#666",
-        dashArray: "",
-        fillOpacity: 0.7
-      });
-
-      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-      }
-
-      info.update(layer.feature.properties);
-    }
-
-    var geojson;
-
-    function resetHighlight(e) {
-      geojson.resetStyle(e.target);
-      info.update();
-    }
-
-    function zoomToFeature(e) {
-      map.fitBounds(e.target.getBounds());
-    }
-
-    function onEachFeature(feature, layer) {
-      layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-        click: zoomToFeature
-      });
-    }
-      
+//   function highlightFeature(e) {
+//      var layer = e.target;
+//
+//      layer.setStyle({
+//        weight: 5,
+//        color: "#666",
+//        dashArray: "",
+//        fillOpacity: 0.7
+//      });
+//
+//      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+//        layer.bringToFront();
+//      }
+//
+//      info.update(layer.feature.properties);
+//    }
+//
+//    var geojson;
+//
+//    function resetHighlight(e) {
+//      geojson.resetStyle(e.target);
+//      info.update();
+//    }
+//
+//    function zoomToFeature(e) {
+//      map.fitBounds(e.target.getBounds());
+//    }
+//
+//    function onEachFeature(feature, layer) {
+//      layer.on({
+//        mouseover: highlightFeature,
+//        mouseout: resetHighlight,
+//        click: zoomToFeature
+//      });
+//    }
+//      
     //Legend
 
     var legend = L.control({ position: "bottomright" });
@@ -275,14 +282,13 @@
       //layer control
       
       var baseMaps = {
-          "States": statesData,
-          "Cities": cities
+          "Basemap": myBasemap,
       };
         
       
       var overlayMaps = {
           "States": statesData,
-          "Wilderness": wildernessAreas
+          "Wilderness": wildernessAreas,
           "Cities": cities
       };
             
@@ -319,10 +325,10 @@
             map.setView(new L.LatLng(43.088611, -91.185556), 13);
         };
       
-      function resetZoom(){
-          map.setview(new.LLatLng(39.828175, -98.5795), 50);
-      };
-     
+//      function resetZoom(){
+//          map.setview(new.LLatLng(39.828175, -98.5795), 50);
+//      };
+//     
     </script>
    
     <p>This is a webmap showing the United States National Wilderness areas as well at highlighting the corresponding state.</p>

@@ -171,6 +171,15 @@
             accessToken: 'pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg' 
         }).addTo(map);
 
+        var statesData = L.geoJson(statesData, {
+      style: style,
+      onEachFeature: onEachFeature
+    }).addTo(map);
+      
+      var wildernessAreas = L.tileLayer.GeoJSON("https://rachelschmitz.github.io/L-A-458-558/assignment2/NationalWilderness/wildernessAreas.geojson").addTo(map);
+
+      var cities = L.tileLayer.GeoJSON("https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson").addTo(map);
+    
     function getColor(d) {
       return d > 1000
         ? "#016450"
@@ -232,15 +241,6 @@
         click: zoomToFeature
       });
     }
-
-    var statesData = L.geoJson(statesData, {
-      style: style,
-      onEachFeature: onEachFeature
-    }).addTo(map);
-      
-      var wildernessAreas = L.TileLayer.GeoJSON("https://rachelschmitz.github.io/L-A-458-558/assignment2/NationalWilderness/wildernessAreas.geojson").addTo(map);
-
-      var cities = L.TileLayer.GeoJSON("https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson").addTo(map);
       
     //Legend
 

@@ -92,6 +92,7 @@
     integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
           crossorigin=""></script>
     
+<!--    legend and map style-->
     <style>
     #map {
       width: 600px;
@@ -116,6 +117,8 @@
 </head>
 
 <body>
+    
+<!--buttons-->
     
          <div class="navbar">
             <a href="../assignment1/index.html">Home</a>
@@ -147,8 +150,9 @@
     <button id="effigy">Visit Effigy Mounds</button>
   <div id="map" />
     
+    <button id="resetZoom">Reset Zoom</button>
     
-
+<!--    maps-->
   <script type="text/javascript"
     src="https://leafletjs.com/examples/choropleth/us-states.js" ></script>
     
@@ -319,6 +323,10 @@
         function effigy() {
             map.setView(new L.LatLng(43.088611, -91.185556), 13);
         };
+      
+      function resetZoom(){
+          map.setview(new.LLatLng(39.828175, -98.5795), 50);
+      };
      
     </script>
    

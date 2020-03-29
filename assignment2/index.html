@@ -97,7 +97,7 @@
     #map {
       width: 600px;
       height: 400px;
-    align-content: center
+    align-content: center;
     }
   
     .legend {
@@ -242,7 +242,7 @@
 
       var cities = L.TileLayer.GeoJSON("https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson").addTo(map);
       
-      
+    //Legend
 
     var legend = L.control({ position: "bottomright" });
 
@@ -289,15 +289,12 @@
       
       L.control.layers(baseMaps, overlayMaps).addTo(map);
       
-    //Yellowstone Marker
+    //Parks Markers
 
       L.marker([44.6, -110.5]).addTo(map)
             .bindPopup("Yellowstone National Park")
             .openPopup();
-      
-      //Effigy Mounds National Park
      
-      //Button Functions
    L.marker([43.088611, -91.185556]).addTo(map)
             .bindPopup("Effigy Mounds National Park")
             .openPopup();
@@ -307,7 +304,8 @@
         
         L.circle([43.088611, -91.185556], {radius: 1200}).addTo(map);
       
-      document.getElementById("yellowstoneBtn").addEventListener("click", yellowstone);
+    //button functions
+    document.getElementById("yellowstoneBtn").addEventListener("click", yellowstone);
 
         
         function yellowstone() {

@@ -238,10 +238,9 @@
       onEachFeature: onEachFeature
     }).addTo(map);
       
-      var wildernessAreas = L.TileLayer.GeoJSON(wildernessAreas).addTo(map);
+      var wildernessAreas = L.TileLayer.GeoJSON("https://rachelschmitz.github.io/L-A-458-558/assignment2/NationalWilderness/wildernessAreas.geojson").addTo(map);
 
-      
-      var cities = L.TileLayer.GeoJSON(cities).addTo(map);
+      var cities = L.TileLayer.GeoJSON("https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson").addTo(map);
       
       
 

@@ -168,8 +168,6 @@
             id: 'mapbox/streets-v11',
             accessToken: 'pk.eyJ1IjoicmFjaGVsc2NobWl0eiIsImEiOiJjazZzbmFxajcwaW5tM2Vyem9mbDl3M2QzIn0.BbIzDBMGcsv3Y3KolAmzhg' 
         }).addTo(map);
-    
-      
 
     function getColor(d) {
       return d > 1000
@@ -238,17 +236,17 @@
       onEachFeature: onEachFeature
     }).addTo(map);
       
-      var wildernessArea = L.geoJson(wildernessArea, {
+      var wildernessAreas = L.geoJson(wildernessAreas, {
       style: style,
       onEachFeature: onEachFeature
     }).addTo(map);
 
-      var cities = L.geoJSON("https://rachelschmitz.github.io/L-A-458-558/geojson/cities.geojson".addTo(map));
       
+      var cities = L.geoJson(cities, {
+      style: style,
+      onEachFeature: onEachFeature
+    }).addTo(map);
       
-    map.attributionControl.addAttribution(
-      'Population data &copy; <a href="http://census.gov/">US Census Bureau</a>'
-    );
       
 
     var legend = L.control({ position: "bottomright" });
@@ -290,10 +288,12 @@
       var overlayMaps = {
           "States": statesData,
           "Wilderness": wildernessAreas
+          "Cities": cities
       };
             
       
       L.control.layers(baseMaps, overlayMaps).addTo(map);
+      
     //Yellowstone Marker
 
       L.marker([44.6, -110.5]).addTo(map)

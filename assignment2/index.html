@@ -236,16 +236,10 @@
       onEachFeature: onEachFeature
     }).addTo(map);
       
-      var wildernessAreas = L.geoJson(wildernessAreas, {
-      style: style,
-      onEachFeature: onEachFeature
-    }).addTo(map);
+      var wildernessAreas = L.geoJson(wildernessAreas).addTo(map);
 
       
-      var cities = L.geoJson(cities, {
-      style: style,
-      onEachFeature: onEachFeature
-    }).addTo(map);
+      var cities = L.geoJson(cities).addTo(map);
       
       
 

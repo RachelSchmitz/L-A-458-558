@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mapping the Impacts of Covid 19</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+    <style>
+        body {
+            font-family: garamond, Helvetica, sans-serif;
+            color: black
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: gainsboro;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: show;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: black;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: peachpuff;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        body {
+            margin: 0;
+        }
+
+        .header {
+            background-image: url("covid.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                text-align: center;
+            padding: 20px;
+            text-align: center;
+            color:azure
+        }
+
+    </style>
+</head>
+
+<body>
+<!--Header-->
+    <div class="header">
+        <h1>LA 458 Final Project</h1>
+        <h2>Rachel Schmitz</h2>
+        <h3>May 4, 2020</h3>
+    </div>
+
+    <body>
+        <style>
+
+            body {
+                background-attachment: fixed;
+                background-size: cover;
+                text-align: center;
+            }
+            
+        </style>
+<!--Navbar-->
+        <div class="navbar">
+            <a href="../assignment1/index.html">Home</a>
+            <div class="dropdown">
+                <a href="../exercise1/index.html">About Me</a>
+                <button class="dropbtn">Exercises and Assignments
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="../exercise1/index.html">Exercise One</a>
+
+                    <a href="../exercise2/index.html">Exercise Two</a>
+
+                    <a href="../Exercise3/">Exercise Three</a>
+
+                    <a href="https://rachelschmitz.github.io/L-A-458-558/exercise4/exercise4/index.html#7/42.174/-94.542">Exercise Four</a>
+                    <a href="https://rachelschmitz.github.io/L-A-458-558/exercise5/index.html">Exercise Five</a>
+                    <a href="">Exercise Six</a>
+                    <a href="https://rachelschmitz.github.io/L-A-458-558/exercise7/index.html">Exercise Seven</a>
+                    <a href="https://rachelschmitz.github.io/L-A-458-558/exercise8/index.html">Exercise Eight</a>
+                    <a href="https://rachelschmitz.github.io/L-A-458-558/exercise9/index.html">Exercise Nine</a>
+                    <a href="https://rachelschmitz.github.io/L-A-458-558/exercise10/index.html">Exercise Ten</a>
+                    <a href="https://rachelschmitz.github.io/L-A-458-558/assignment1/index.html">Assignment One</a>
+                    <a href="https://rachelschmitz.github.io/L-A-458-558/assignment2/index.html">Assignment Two</a>
+                    
+                </div>
+            </div>
+        </div>
+
+<body>
+    <style>
+    font-family: "Avenir Next", sans-serif
+        font-size: 12px
+    </style>
+
+
+<h1>Keeping Updated on Coronavirus.</h1>
+
+<p>This page will give direct and straightforward information about the current statistics on the pandemic COVID19 across the world.</p>
+
+
+<p>This first map is a representation of the current cases by country, state, and province. There is the option to add Deaths by Country, Active Cases by Country, and Total Cases by Country. The following map is a heatmap showing confirmed cases in the United States.</p>
+    
+    <!--Map 1- current impact-->
+<div class="embed-container"><iframe width="500" height="500" align=center frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="COVID-19" src="//isugisf.maps.arcgis.com/apps/Embed/index.html?webmap=22743e47f5ff469b80cbbebd6a61290a&extent=-130.1843,-3.494,-2.7429,68.1461&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&legendlayers=true&basemap_gallery=true&disable_scroll=true&theme=dark"></iframe></div>
+    <style>.embed-container {height: 500; width:500}</style><div class="embed-container"><small><a href="//isugisf.maps.arcgis.com/apps/Embed/index.html?webmap=63cadd4b6fa04f7bbfe9788bff6d21b6&extent=-160.7129,-7.6296,-8.1347,66.546&home=true&zoom=true&scale=true&search=true&searchextent=true&basemap_toggle=true&alt_basemap=topo&disable_scroll=true&theme=dark" style="color:#0000FF;text-align:left" target="_blank">View larger map</a></small><br><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="heatmap COVID" src="//isugisf.maps.arcgis.com/apps/Embed/index.html?webmap=63cadd4b6fa04f7bbfe9788bff6d21b6&extent=-160.7129,-7.6296,-8.1347,66.546&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&basemap_toggle=true&alt_basemap=topo&disable_scroll=true&theme=dark"></iframe></div>
+    
+    <p>Map number two shows statistics from the Institure for Health Metrics and Evaluation (IHME) in order to give information about the projected peak time of the virus. </p>
+
+    <!--Map two - showing projected peaks for states and countries using choroeplath map-->
+    <iframe width='500' height='400' align=center frameborder='0' scrolling='no' marginheight='0' marginwidth='0' title='Projected' src='https://www.maps.arcgis.com/apps/Styler/index.html?appid=230e6ea74c064fcfa390721d29b05cfe&lat=42.50721&lon=-44.15075&zoom=1'></iframe>
+
+    <head>
+          <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+        <style>
+       #map {position: center; height: 400px }
+    </style>
+    </head>
+    <body>
+        
+        <p>This map will take you to the beginning of the virus.</p>
+        
+         <button id="patientBtn">Zoom to Patient 0</button>
+
+        
+        <script>
+        function patientBtn() {
+            map.panTo(new L.LatLng(30.53, 114.08));
+        };
+        
+</script>
+<!--        //style for buttons-->
+        
+        <style>
+        .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+        </style>
+        
+  <!--Map 3 - simple map with popup and button-->
+
+    <div id = "map"></div>
+    <script>
+        var map = L.map('map').setView([30.53, 114.08], 1);
+L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=4Baj1oBUpdvIdbq8BInJ', {
+    attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+}).addTo(map);
+        
+        var marker = L.marker([30.53, 114.08]).addTo(map);
+        var circle = L.circle([30.53, 114.08], {
+            color: 'red',
+            fillColor: 'f03',
+            fillOpacity: 0.5,
+            radius: 5000,
+        }).addTo(map);
+        
+        marker.bindPopup('<b>First Case</b><br>This is where the first case of COVID19 was confirmed.</br>').openPopup();
+        
+         document.getElementById("patientBtn").addEventListener("click", patient);
+
+        
+        function patient() {
+            map.setView(new L.LatLng(30.53, 114.08), 13);
+        };  
+        
+        </script>
+    </body>
+    
+    <body>
+        <h>Population Density</h>
+        <p>Population Density has a direct correlation between the virus spreading as well as the numebr of deaths.This map shows the population statistics for the united states.</p>
+        <p> People at the highest risk of death are highlighted in red.</p>
+  <!--Map 4 - Population Density showing most vulnerable-->      
+        <script src="http://rachelschmitz.github.io/L-A-458-558/final/popOpenLayers/layers/layers.js"></script>
+         <div style="width:500; height:500" id="map2"></div>
+      <script defer="defer" type="text/javascript">
+        var map2 = new OpenLayers.Map('map2');
+        var wms_layers = new OpenLayers.Layer.WMS(
+          "WMS",
+          "http://localhost/cgi-bin/qgis_mapserv.fcgi",
+          {
+          'map2': '/final/popOpenLayers/layers/layers.js',
+         } );
+        map.addLayer(wms_layers);
+        map.zoomToMaxExtent();
+      </script>
+    
+    <img src="populationDensity.png" alt=popDensity height: 42 width: 42>
+    
+    </body>
+    <body>
+<h3>As of Wednesday May 4th the current statistics are:</h3>
+    <b>Coronavirus Cases</b>
+    <p>3,580,202</p>
+    <b>Deaths</b>
+    <p>248,452</p>
+    <b>Recovered</b>
+    <p>1,159,219</p>
+    <b>Currently Infected</b>
+    <p>2,172,531</p>
+    <b>Closed Cases</b>
+    <p>1,407,671</p>
+        
+        <p>Staying clean and healthy is the best way to combat this pandemic. Making sure to wash your hands as well as recognise the symptoms will help you as well as those around you. Use the button below to read more on recognize symptoms.</p>
+    <button onclick="window.location.href = 'https://www.worldometers.info/coronavirus/coronavirus-symptoms/';">Symptoms of Covid</button>
+        
+        <h4>Symptoms of Covid19</h4>
+        <p><b>Fever</b></p>
+        <p><b>Cough</b></p>
+       <p> <b>Difficulty Breathing</b></p>
+        <p><b>Chills</b></p>
+       <p> <b>Repeated Shaking with Chills</b></p>
+       <p> <b>Muscle Pain</b></p>
+       <p> <b>Headache</b></p>
+       <p> <b>Sore Throat</b></p>
+       <p> <b>New Loss of Taste or Smell</b></p>
+        
+        
+</body>
+</html>
